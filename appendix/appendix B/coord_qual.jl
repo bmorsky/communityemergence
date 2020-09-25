@@ -135,9 +135,9 @@ phiVomega <- as.data.frame(phiVomega)
 
 cols = c("0"="#2EC4b6", "1"="#F5F5F5", "2"="#011627", "10"="#E71D36", "11"="#FF9F1C")
 iotaphicols = c(0,0.05,0.1,0.15,0.2)
-iotaphilims = c(0,0.2)
+iotaphilims = c(0,0.22)
 ellomegacols = c(0,0.25,0.5,0.75,1)
-ellomegalims = c(0,1)
+ellomegalims = c(0,1.1)
 
 q1 <- ggplot() +
 geom_raster(data=iotaVell,aes(x=V1,y=V2,fill=factor(V3))) +
@@ -148,7 +148,7 @@ scale_y_continuous(expand=c(0,0), limits=ellomegalims, breaks=ellomegacols, labe
 ylab(expression(paste("Learning rate, ", '\u2113'))) +
 xlab(expression(paste("Inflow rate, ", iota))) +
 coord_fixed(ratio = 0.2)
-ggsave(q1,filename="/home/bmorsky/napster/coord_iotaVell.png", width = 3.5, height = 3.5)
+ggsave(q1,filename="coord_iotaVell.png", width = 3.5, height = 3.5)
 
 q2 <- ggplot() +
 geom_raster(data=iotaVomega,aes(x=V1,y=V2,fill=factor(V3))) +
@@ -159,7 +159,7 @@ scale_y_continuous(expand=c(0,0), limits=ellomegalims, breaks=ellomegacols, labe
 ylab(expression(paste("Outflow rate, ", omega))) +
 xlab(expression(paste("Inflow rate, ", iota))) +
 coord_fixed(ratio = 0.2)
-ggsave(q2,filename="/home/bmorsky/napster/coord_iotaVomega.png", width = 3.5, height = 3.5)
+ggsave(q2,filename="coord_iotaVomega.png", width = 3.5, height = 3.5)
 
 q3 <- ggplot() +
 geom_raster(data=iotaVphi,aes(x=V1,y=V2,fill=factor(V3))) +
@@ -170,7 +170,7 @@ scale_y_continuous(expand=c(0,0), limits=iotaphilims, breaks=iotaphicols, labels
 ylab(expression(paste("Resusceptibility rate, ", phi))) +
 xlab(expression(paste("Inflow rate, ", iota))) +
 coord_fixed(ratio = 1)
-ggsave(q3,filename="/home/bmorsky/napster/coord_iotaVphi.png", width = 3.5, height = 3.5)
+ggsave(q3,filename="coord_iotaVphi.png", width = 3.5, height = 3.5)
 
 q4 <- ggplot() +
 geom_raster(data=ellVomega,aes(x=V1,y=V2,fill=factor(V3))) +
@@ -181,7 +181,7 @@ scale_y_continuous(expand=c(0,0), limits=ellomegalims, breaks=ellomegacols, labe
 ylab(expression(paste("Outflow rate, ", omega))) +
 xlab(expression(paste("Learning rate, ", '\u2113'))) +
 coord_fixed(ratio = 1)
-ggsave(q4,filename="/home/bmorsky/napster/coord_ellVomega.png", width = 3.5, height = 3.5)
+ggsave(q4,filename="coord_ellVomega.png", width = 3.5, height = 3.5)
 
 q5 <- ggplot() +
 geom_raster(data=phiVell,aes(x=V1,y=V2,fill=factor(V3))) +
@@ -192,7 +192,7 @@ scale_y_continuous(expand=c(0,0), limits=ellomegalims, breaks=ellomegacols, labe
 ylab(expression(paste("Learning rate, ", '\u2113'))) +
 xlab(expression(paste("Resusceptibility rate, ", phi))) +
 coord_fixed(ratio = 0.2)
-ggsave(q5,filename="/home/bmorsky/napster/coord_phiVell.png", width = 3.5, height = 3.5)
+ggsave(q5,filename="coord_phiVell.png", width = 3.5, height = 3.5)
 
 q6 <- ggplot() +
 geom_raster(data=phiVomega,aes(x=V1,y=V2,fill=factor(V3))) +
@@ -203,7 +203,7 @@ scale_y_continuous(expand=c(0,0), limits=ellomegalims, breaks=ellomegacols, labe
 ylab(expression(paste("Outflow rate, ", omega))) +
 xlab(expression(paste("Resusceptibility rate, ", phi))) +
 coord_fixed(ratio = 0.2)
-ggsave(q6,filename="/home/bmorsky/napster/coord_phiVomega.png", width = 3.5, height = 3.5)
+ggsave(q6,filename="coord_phiVomega.png", width = 3.5, height = 3.5)
 
 ## Function to extract legend
 g_legend <- function(a.gplot){
@@ -225,5 +225,5 @@ coord_fixed(ratio = 1) +
 guides(fill=guide_legend(title="Nature of equilibria: "))
 
 legend <- g_legend(legend)
-ggsave(legend,filename="/home/bmorsky/napster/coord_legend.png", width = 8.5, height = 3.5)
+ggsave(legend,filename="coord_legend.png", width = 8.5, height = 3.5)
 """

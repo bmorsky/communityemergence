@@ -61,7 +61,7 @@ function crashTest(μ,σ²,ι,ℓ,ω,φ)
     solỹ(x) = -μ.+q .- sqrt(2*σ²)*erfinv.(2*x .- 1) # (q-p)*soly
 
     # compute crash equilibria y* and p* within [0,1]
-    p = find_zeros(p -> ω*solỹ(p)*soly(p)^2 + ω*(q̂-q)*soly(p)^2 - (ℓ+ω)*solỹ(p)*soly(p) - ((ℓ+ω)*(q̂-q) + ι)*soly(p) + ℓ*solỹ(p) + ℓ*(q̂-q), 0, q, no_pts=200)
+    p = find_zeros(p -> ω*solỹ(p)*soly(p)^2 + ω*(q̂-q)*soly(p)^2 - (ℓ+ω)*solỹ(p)*soly(p) - ((ℓ+ω)*(q̂-q) + ι)*soly(p) + ℓ*solỹ(p) + ℓ*(q̂-q), 0, q, no_pts=350)
     p = p[0 .<= p .<= 1]
     y = soly(p)
 
@@ -136,9 +136,9 @@ phiVomega <- as.data.frame(phiVomega)
 
 cols = c("0"="#2EC4b6", "1"="#F5F5F5", "2"="#011627", "10"="#E71D36", "11"="#FF9F1C")
 iotaphicols = c(0,0.15,0.3,0.45,0.6)
-iotaphilims = c(0,0.6)
+iotaphilims = c(0,0.66)
 ellomegacols = c(0.6,0.8,1.0,1.2,1.4)
-ellomegalims = c(0.6,1.4)
+ellomegalims = c(0.6,1.41)
 
 q1 <- ggplot() +
 geom_raster(data=iotaVell,aes(x=V1,y=V2,fill=factor(V3))) +
@@ -149,7 +149,7 @@ scale_y_continuous(expand=c(0,0), limits=ellomegalims, breaks=ellomegacols, labe
 ylab(expression(paste("Learning rate, ", '\u2113'))) +
 xlab(expression(paste("Inflow rate, ", iota))) +
 coord_fixed(ratio = 0.75)
-ggsave(q1,filename="/home/bmorsky/napster/coop_iotaVell.png", width = 3.5, height = 3.5)
+ggsave(q1,filename="coop_iotaVell.png", width = 3.5, height = 3.5)
 
 q2 <- ggplot() +
 geom_raster(data=iotaVomega,aes(x=V1,y=V2,fill=factor(V3))) +
@@ -160,7 +160,7 @@ scale_y_continuous(expand=c(0,0), limits=ellomegalims, breaks=ellomegacols, labe
 ylab(expression(paste("Outflow rate, ", omega))) +
 xlab(expression(paste("Inflow rate, ", iota))) +
 coord_fixed(ratio = 0.75)
-ggsave(q2,filename="/home/bmorsky/napster/coop_iotaVomega.png", width = 3.5, height = 3.5)
+ggsave(q2,filename="coop_iotaVomega.png", width = 3.5, height = 3.5)
 
 q3 <- ggplot() +
 geom_raster(data=iotaVphi,aes(x=V1,y=V2,fill=factor(V3))) +
@@ -171,7 +171,7 @@ scale_y_continuous(expand=c(0,0), limits=iotaphilims, breaks=iotaphicols, labels
 ylab(expression(paste("Resusceptibility rate, ", phi))) +
 xlab(expression(paste("Inflow rate, ", iota))) +
 coord_fixed(ratio = 1)
-ggsave(q3,filename="/home/bmorsky/napster/coop_iotaVphi.png", width = 3.5, height = 3.5)
+ggsave(q3,filename="coop_iotaVphi.png", width = 3.5, height = 3.5)
 
 q4 <- ggplot() +
 geom_raster(data=ellVomega,aes(x=V1,y=V2,fill=factor(V3))) +
@@ -182,7 +182,7 @@ scale_y_continuous(expand=c(0,0), limits=ellomegalims, breaks=ellomegacols, labe
 ylab(expression(paste("Outflow rate, ", omega))) +
 xlab(expression(paste("Learning rate, ", '\u2113'))) +
 coord_fixed(ratio = 1)
-ggsave(q4,filename="/home/bmorsky/napster/coop_ellVomega.png", width = 3.5, height = 3.5)
+ggsave(q4,filename="coop_ellVomega.png", width = 3.5, height = 3.5)
 
 q5 <- ggplot() +
 geom_raster(data=phiVell,aes(x=V1,y=V2,fill=factor(V3))) +
@@ -193,7 +193,7 @@ scale_y_continuous(expand=c(0,0), limits=ellomegalims, breaks=ellomegacols, labe
 ylab(expression(paste("Learning rate, ", '\u2113'))) +
 xlab(expression(paste("Resusceptibility rate, ", phi))) +
 coord_fixed(ratio = 0.75)
-ggsave(q5,filename="/home/bmorsky/napster/coop_phiVell.png", width = 3.5, height = 3.5)
+ggsave(q5,filename="coop_phiVell.png", width = 3.5, height = 3.5)
 
 q6 <- ggplot() +
 geom_raster(data=phiVomega,aes(x=V1,y=V2,fill=factor(V3))) +
@@ -204,7 +204,7 @@ scale_y_continuous(expand=c(0,0), limits=ellomegalims, breaks=ellomegacols, labe
 ylab(expression(paste("Outflow rate, ", omega))) +
 xlab(expression(paste("Resusceptibility rate, ", phi))) +
 coord_fixed(ratio = 0.75)
-ggsave(q6,filename="/home/bmorsky/napster/coop_phiVomega.png", width = 3.5, height = 3.5)
+ggsave(q6,filename="coop_phiVomega.png", width = 3.5, height = 3.5)
 
 ## Function to extract legend
 g_legend <- function(a.gplot){
@@ -226,5 +226,5 @@ coord_fixed(ratio = 0.75) +
 guides(fill=guide_legend(title="Nature of equilibria: "))
 
 legend <- g_legend(legend)
-ggsave(legend,filename="/home/bmorsky/napster/coop_legend.png", width = 10.5, height = 3.5)
+ggsave(legend,filename="coop_legend.png", width = 10.5, height = 3.5)
 """
