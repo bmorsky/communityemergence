@@ -122,14 +122,14 @@ for m = 1:1:1000
         else
             global higheq = vcat(higheq, [ℓ I[1] 2])
         end
-        if length(eqp) == 2
+        if length(eqp) > 1
             if routhHurwitz(ℓ,eqp[2])
                 global mideq = vcat(mideq, [ℓ I[2] 3])
             else
                 global mideq = vcat(mideq, [ℓ I[2] 4])
             end
         end
-        if length(eqp) == 3
+        if length(eqp) > 3
             if routhHurwitz(ℓ,eqp[3])
                 global loweq = vcat(loweq, [ℓ I[3] 5])
             else

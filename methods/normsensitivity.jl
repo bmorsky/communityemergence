@@ -24,10 +24,10 @@ p <- ggplot(data=output, aes(x=V1, y=V2, group = factor(V3), color=factor(V3))) 
         scale_x_continuous(expand = c(0, 0),labels=c(0,0.25,0.5,0.75,1),lim = c(0,1.05)) +
         scale_linetype_manual(values=c("solid","solid","solid")) +
         scale_color_manual(values=c("black","blue","red")) +
-        ylab(expression(paste("Conditional cooperation, ", F(p)))) +
-        theme(legend.position = "none", plot.title = element_text(hjust=0.8)) +
+        ylab(expression(paste("Frequency of cooperation given ", p, ", ", F(p)))) +
+        theme(legend.position = "none") +
         xlab(expression(paste("Frequency of cooperation, ", p))) +
-        ggtitle(expression("Norm sensitivity to the frequency of cooperation"))
+        ggtitle(expression("Norm sensitivity"))
 
-save_plot(p,filename="normsensitivity.png",base_height = 5.25,base_width = 5.25)
+save_plot(p,filename="normsensitivity.png",base_height = 4,base_width = 4)
 """
