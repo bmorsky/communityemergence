@@ -42,14 +42,14 @@ library(viridisLite)
 output <- as.data.frame(output)
 
 p <- ggplot(data=output, aes(x=V1, y=V2, group = factor(V3), color=factor(V3))) + geom_line(aes(linetype=factor(V3)),size=1) +
-        scale_y_continuous(expand = c(0, 0),breaks=c(0,0.5,1),labels=c(0,0.5,1),lim = c(0,1.01)) +
+        scale_y_continuous(expand = c(0, 0),breaks=c(0,0.25,0.5,0.75,1),labels=c(0,0.25,0.5,0.75,1),lim = c(0,1.01)) +
         scale_x_continuous(expand = c(0, 0),labels=c(0,0.25,0.5,0.75,1),lim = c(0,1.05)) +
         scale_linetype_manual(values=c("solid","solid","dashed")) +
         scale_color_manual(values=c("black","blue","blue")) +
-        ylab(expression(paste("Conditional cooperation, ", F(bar(p))))) +
+        ylab(expression(paste("Conditional cooperation, ",  F(bar(p))))) +
         theme(legend.position = "none") +
         xlab(expression(paste("Frequency of cooperation, ", bar(p)))) +
-        ggtitle(expression("Savvy players' behaviour"))
+        ggtitle(expression("Norm sensitivity"))
 
 save_plot(p,filename="shifted_coord.png",base_height = 3.5,base_width = 3.5)
 """

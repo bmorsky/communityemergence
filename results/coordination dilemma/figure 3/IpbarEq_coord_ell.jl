@@ -113,7 +113,6 @@ colscolour = c("-1"="black","0"="black","1"="black","2"="magenta","3"="black","4
 p <- ggplot() +
         geom_line(data=output, aes(x=V1, y=V2, color = factor(V3), group = factor(V3),linetype=factor(V3)),size=1) +
         geom_point(data=bifpoint, aes(x=V1, y=V2), shape=21, fill="magenta",color="white") +
-        geom_text(data=bifpoint,aes(x=V1, y=V2),label = expression(paste('\u2113',"*")),hjust=1,vjust=0.07) +
         scale_y_continuous(expand = c(0, 0),breaks=c(0,25,50,75,100),labels=c("0","K/4","K/2","3K/4","K"), lim = c(0,101)) +
         scale_x_continuous(expand = c(0, 0),breaks=c(0,0.5,1,1.5,2),labels=c(0,0.5,1,1.5,2),lim = c(0,2.05)) +
         scale_linetype_manual(values=colstype) +

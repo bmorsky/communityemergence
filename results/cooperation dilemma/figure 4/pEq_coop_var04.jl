@@ -52,13 +52,12 @@ colscolour = c("-2"="black","-1"="black","0"="black","1"="black","2"="magenta","
 p <- ggplot() +
         geom_line(data=output, aes(x=V1, y=V2, color = factor(V3), group = factor(V3),linetype=factor(V3)),size=1) +
         geom_point(data=bifpoints, aes(x=V1, y=V2), shape=21, fill="magenta",color="white") +
-        geom_text(data=bifpoints,aes(x=V1, y=V2),label = c(expression(paste(omega[3],"*",'/\u2113'[3],"*")),expression(paste(omega[2],"*",'/\u2113'[2],"*"))),hjust=c(-0.1,1),vjust=0.07) +
-        scale_y_continuous(expand = c(0, 0),labels=c(0,0.5,1,1.5,2),lim = c(0,2.05)) +
+        scale_y_continuous(expand = c(0, 0),labels=c(0,0.5,1,1.5),lim = c(0,1.55)) +
         scale_x_continuous(expand = c(0, 0),breaks=c(0,0.5,1),labels=c(0,0.5,1),lim = c(0,1.01)) +
         scale_linetype_manual(values=colstype) +
         scale_color_manual(values=colscolour) +
-        xlab(expression(paste("Mean cooperation at equilibrium, ", bar(p),"*"))) +
-        ylab(expression(paste("Ratio of leaving to learning rates, ", omega,'/\u2113'))) +
+        xlab(expression(paste("Mean frequency of cooperation, ", bar(p),"*"))) +
+        ylab(expression(paste("Ratio of outflow to learning rates, ", omega,'/\u2113'))) +
         theme(legend.position = "none", axis.title.x = element_text(hjust=0.8)) +
         ggtitle(expression(paste("Equilibria ",dot(p),"=0 with ",sigma^2,"=0.04"))) +
         coord_flip()

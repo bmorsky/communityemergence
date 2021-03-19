@@ -45,11 +45,11 @@ library(viridisLite)
 output <- as.data.frame(output)
 
 p <- ggplot(data=output, aes(x=V1, y=V2)) + geom_line(size=1) +
-        scale_y_continuous(expand = c(0, 0),breaks=c(0,0.5,1),labels=c(0,0.5,1),lim = c(0,1.01)) +
+        scale_y_continuous(expand = c(0, 0),breaks=c(0,0.25,0.5,0.75,1),labels=c(0,0.25,0.5,0.75,1),lim = c(0,1.01)) +
         scale_x_continuous(expand = c(0, 0),labels=c(0,0.025,0.05,0.075,0.1),lim = c(0,0.105)) +
-        ylab(expression(paste("Bifurcation point, ", omega,"*",'/\u2113',"*"))) +
+        ylab(expression(paste("Ratio of outflow to learning rates, ", omega,'/\u2113'))) +
         xlab(expression(paste("Variance in norm sensitivity, ",sigma^2))) +
-        ggtitle(expression("Bifurcation point")) +
+        ggtitle(expression("Bifurcation points")) +
         theme(axis.title.x=element_text(margin=margin(t=0,r=0,b=-0.75,l=0)))
 
 save_plot(p,filename="bifpoint_coord.png",base_height = 3.5,base_width = 3.5)

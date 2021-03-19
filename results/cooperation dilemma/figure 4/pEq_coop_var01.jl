@@ -8,6 +8,10 @@ K = 100 # total population
 q̂ = maximum(find_zeros(x -> 0.5*(1 + erf((x - 0.5)/sqrt(2*σ²))) - x, 0, 1))
 q = 0.5*(1 + erf((q̂ - μ)/sqrt(2*σ²)))
 
+# functions
+f(y,p) = exp.(-(((p.-q).*y .+ q .- μ).^2)/(2*σ²))/sqrt(2*π*σ²)
+#f(x) = exp.(-((x .- μ).^2)/(2*σ²))/sqrt(2*π*σ²)
+
 loweq = Array{Float64}(undef, 0, 3)
 mideq = Array{Float64}(undef, 0, 3)
 higheq = Array{Float64}(undef, 0, 3)
@@ -58,13 +62,12 @@ colscolour = c("-1"="black","0"="black","1"="black","2"="magenta","3"="black","4
 p <- ggplot() +
         geom_line(data=output, aes(x=V1, y=V2, color = factor(V3), group = factor(V3),linetype=factor(V3)),size=1) +
         geom_point(data=bifpoint, aes(x=V1, y=V2), shape=21, fill="magenta",color="white") +
-        geom_text(data=bifpoint,aes(x=V1, y=V2),label = expression(paste(omega[1],"*",'/\u2113'[1],"*")),hjust=-0.1,vjust=0.07) +
-        scale_y_continuous(expand = c(0, 0),breaks=c(0,0.5,1),labels=c(0,0.5,1),lim = c(0,1.01)) +
+        scale_y_continuous(expand = c(0, 0),breaks=c(0,0.25,0.5,0.75,1),labels=c(0,0.25,0.5,0.75,1),lim = c(0,1.01)) +
         scale_x_continuous(expand = c(0, 0),breaks=c(0,0.5,1,1.5,2),labels=c(0,0.5,1,1.5,2),lim = c(0,2.01)) +
         scale_linetype_manual(values=colstype) +
         scale_color_manual(values=colscolour) +
-        ylab(expression(paste("Mean cooperation at equilibrium, ", bar(p),"*"))) +
-        xlab(expression(paste("Ratio of leaving to learning rates, ", omega,'/\u2113'))) +
+        ylab(expression(paste("Mean frequency of cooperation, ", bar(p),"*"))) +
+        xlab(expression(paste("Ratio of outflow to learning rates, ", omega,'/\u2113'))) +
         theme(legend.position = "none", axis.title.x = element_text(hjust=0.8)) +
         ggtitle(expression(paste("Equilibria ",dot(p),"=0 with ",sigma^2,"=0.01")))
 

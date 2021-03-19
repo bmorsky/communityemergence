@@ -46,8 +46,8 @@ p <- ggplot() +
         scale_y_continuous(expand = c(0, 0),breaks=c(0,0.5,1),labels=c(0,0.5,1),lim = c(0,1.01)) +
         scale_x_continuous(expand = c(0, 0),breaks=c(0,0.5,1,1.5,2),labels=c(0,0.5,1,1.5,2),lim = c(0,2.01)) +
         scale_linetype_manual(values=c("solid","solid","solid")) +
-        ylab(expression(paste("Mean cooperation at equilibrium, ", bar(p),"*"))) +
-        xlab(expression(paste("Ratio of leaving to learning rates, ", omega,'/\u2113'))) +
+        ylab(expression(paste("Mean frequency of cooperation, ", bar(p),"*"))) +
+        xlab(expression(paste("Ratio of outflow to learning rates, ", omega,'/\u2113'))) +
         theme(legend.position = "none", axis.title.x = element_text(hjust=0.8)) +
         ggtitle(expression(paste("Equilibria ",dot(p),"=0 with ",sigma^2,"=0.09")))
 

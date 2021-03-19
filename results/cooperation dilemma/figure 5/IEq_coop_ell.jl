@@ -133,13 +133,12 @@ colscolour = c("-2"="black","-1"="black","1"="black","2"="magenta","3"="black","
 p <- ggplot() +
         geom_line(data=output, aes(x=V1, y=V2, color = factor(V3), group = factor(V3),linetype=factor(V3)),size=1) +
         geom_point(data=bifpoints, aes(x=V1, y=V2), shape=21, fill="magenta",color="white") +
-        geom_text(data=bifpoints,aes(x=V1, y=V2),label = c(expression(paste('\u2113'[1],"*")),expression(paste('\u2113'[2],"*"))),hjust=c(1,-0.1),vjust=0.07) +
         scale_y_continuous(expand = c(0, 0),breaks=c(0,25,50,75,100),labels=c("0","K/4","K/2","3K/4","K"),lim = c(0,101)) +
         scale_x_continuous(expand = c(0, 0),breaks=c(0,0.5,1,1.5,2),labels=c(0,0.5,1,1.5,2),lim = c(0,2.05)) +
         scale_linetype_manual(values=colstype) +
         scale_color_manual(values=colscolour) +
-        ylab(expression(paste("Size of community at equilibrium, I*"))) +
-        xlab(expression(paste("Leaving rate, ", '\u2113'))) +
+        ylab(expression(paste("Number of insiders, I*"))) +
+        xlab(expression(paste("Learning rate, ", '\u2113'))) +
         theme(legend.position = "none") +
         ggtitle(expression(paste("Community size")))
 
