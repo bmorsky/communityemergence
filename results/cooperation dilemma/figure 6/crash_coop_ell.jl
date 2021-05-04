@@ -71,7 +71,7 @@ function crashTest(ℓ)
     solỹ(x) = -μ.+q .- sqrt(2*σ²)*erfinv.(2*x .- 1) # (q-p)*soly
 
     # compute crash equilibria y* and p* within [0,1]
-    p = find_zeros(p -> ω*solỹ(p)*soly(p)^2 + ω*(q̂-q)*soly(p)^2 - (ℓ+ω)*solỹ(p)*soly(p) - ((ℓ+ω)*(q̂-q) + ι)*soly(p) + ℓ*solỹ(p) + ℓ*(q̂-q), 0, q, no_pts=50)
+    p = find_zeros(p -> ω*solỹ(p)*soly(p)^2 + ω*(q̂-q)*soly(p)^2 - (ℓ+ω)*solỹ(p)*soly(p) - ((ℓ+ω)*(q̂-q) + ι)*soly(p) + ℓ*solỹ(p) + ℓ*(q̂-q), 0, q, no_pts=100)
     p = p[0 .<= p .<= 1]
     y = soly(p)
 
@@ -95,10 +95,10 @@ for m = 1:1:1000
     if crashTest(ℓ)
         global crasheq = vcat(crasheq, [ℓ 0 0])
     end
-
     # compute other equilibria
     eqy = ℓ/(ℓ+ω)
     eqp = find_zeros(p -> 0.5*(1 .+ erf.((eqy.*(p.-q) .+ q .- μ)/sqrt(2*σ²))) .- p, 0, 1)
+
     eqp = eqp[0 .<= eqp .< 1]
     if isempty(eqp)
             break
