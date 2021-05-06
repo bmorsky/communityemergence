@@ -168,7 +168,7 @@ p <- ggplot() +
         scale_linetype_manual(values=colstype) +
         scale_color_manual(values=colscolour) +
         ylab(expression(paste("Size of community at equilibrium, I*"))) +
-        xlab(expression(paste("Leaving rate, ", omega))) +
+        xlab(expression(paste("Outflow rate, ", omega))) +
         theme(legend.position = "none") +
         ggtitle(expression(paste("Community size")))
 
